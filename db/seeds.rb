@@ -9,7 +9,8 @@ puts "🌱 Seeding gamers..."
     origin: Faker::Nation.nationality,
     gender: Faker::Gender.short_binary_type.upcase,
     favorite: "blank",
-    bio: Faker::Lorem.paragraph
+    bio: Faker::Lorem.paragraph,
+    image: Faker::Avatar.image
   )
 end
 

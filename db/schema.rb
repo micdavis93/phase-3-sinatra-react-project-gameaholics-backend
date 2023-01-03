@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2023_01_02_191258) do
     t.string "gender"
     t.string "favorite"
     t.string "bio"
+    t.string "image"
   end
 
   create_table "games", force: :cascade do |t|

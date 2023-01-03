@@ -7,6 +7,7 @@ class Gamers < ActiveRecord::Migration[6.1]
       t.string :gender
       t.string :favorite
       t.string :bio
+      t.string :image
     end
   end
 end
