@@ -12,7 +12,6 @@ class ApplicationController < Sinatra::Base
     games = Game.all
     games.to_json
   end
-  
   get '/games/:id' do
     game = Game.find(params[:id])
     game.to_json
@@ -22,7 +21,6 @@ class ApplicationController < Sinatra::Base
     gamers = Gamer.all
     gamers.to_json
   end
-  
   get '/gamers/:id' do
     gamer = Gamer.find(params[:id])
     gamer.to_json
@@ -32,7 +30,6 @@ class ApplicationController < Sinatra::Base
     reviews = Review.all
     reviews.to_json
   end
-  
   get '/reviews/:id' do
     review = Review.find(params[:id])
     review.to_json
