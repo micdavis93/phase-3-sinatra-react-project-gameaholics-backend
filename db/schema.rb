@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2023_01_02_191258) do
     t.string "title"
     t.integer "rating"
     t.integer "hours"
-    t.string "review"
+    t.string "text"
     t.integer "game_id"
     t.integer "gamer_id"
   end

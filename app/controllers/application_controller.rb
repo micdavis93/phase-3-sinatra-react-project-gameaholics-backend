@@ -20,7 +20,14 @@ class ApplicationController < Sinatra::Base
 
   get '/games/:id' do
     game = Game.find(params[:id])
-    game.to_json
+    game.to_json(include: { 
+      reviews: { include: { 
+        gamer: { 
+          only: [:name, :image]
+        }
+      }}
+    }
+    )
   end
 
   post '/games' do
@@ -46,6 +53,11 @@ class ApplicationController < Sinatra::Base
     game.to_json
   end
 
+  delete '/games/:id' do
+    game = Game.find(params[:id])
+    game.destroy
+  end
+
 
 #####################################
   # GAMERS
@@ -56,7 +68,13 @@ class ApplicationController < Sinatra::Base
 
   get '/gamers/:id' do
     gamer = Gamer.find(params[:id])
-    gamer.to_json
+    gamer.to_json(include: {
+      reviews: { include: {
+        game: { 
+          only: [:title, :image]
+        }
+      }}
+    })
   end
 
   post '/gamers' do
@@ -87,7 +105,9 @@ class ApplicationController < Sinatra::Base
   # REVIEWS
   get '/reviews' do
     reviews = Review.all
-    reviews.to_json
+    reviews.to_json(include: {
+      game: { only: [:image]}
+    })
   end
 
   get '/reviews/:id' do
@@ -100,7 +120,7 @@ class ApplicationController < Sinatra::Base
       title: params[:title],
       rating: params[:rating],
       hours: params[:hours],
-      review: params[:review],
+      text: params[:text],
       game_id: params[:game_id],
       gamer_id: params[:gamer_id]
     )

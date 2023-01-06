@@ -4,7 +4,7 @@ class Reviews < ActiveRecord::Migration[6.1]
       t.string :title
       t.integer :rating
       t.integer :hours
-      t.string :review
+      t.string :text
       t.integer :game_id
       t.integer :gamer_id
     end

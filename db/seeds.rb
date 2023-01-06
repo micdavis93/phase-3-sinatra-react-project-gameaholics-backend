@@ -1,3 +1,8 @@
+puts "💥 Destroying data..."
+Gamer.destroy_all
+Game.destroy_all
+Review.destroy_all
+
 puts "🌱 Seeding data..."
 
 puts "🌱 Seeding gamers..."
@@ -9,7 +14,7 @@ puts "🌱 Seeding gamers..."
     origin: Faker::Nation.nationality,
     gender: Faker::Gender.short_binary_type.upcase,
     favorite: "blank",
-    bio: Faker::Lorem.paragraph,
+    bio: Faker::Lorem.paragraph(sentence_count: 20),
     image: Faker::Avatar.image
   )
 end
@@ -109,14 +114,14 @@ puts "🌱 Seeding reviews..."
 # Create Reviews
 # create between 3 and 6 reviews for each game
 Game.all.each do |game|
-  rand(3..6).times do
+  rand(10..15).times do
     gamer = Gamer.order('RANDOM()').first
     
     Review.create(
       title: Faker::Lorem.sentence,
       rating: rand(1..10),
       hours: rand(10..200),
-      review: Faker::Lorem.paragraph,
+      text: Faker::Lorem.paragraph(sentence_count: 10),
       game_id: game.id,
       gamer_id: gamer.id
     )
